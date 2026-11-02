@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Westcoast_Education_Avalonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Westcoast_Education_Avalonia.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Westcoast_Education_Avalonia">
+
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+<Grid ColumnDefinitions="220,*" Background="{DynamicResource AppBackgroundBrush}">
+
+    <Border Grid.Column="0"
+            Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource BorderBrush}"
+            BorderThickness="0,0,1,0">
+        <StackPanel Margin="12" Spacing="8">
+            <TextBlock Text="Menu" FontSize="18" FontWeight="Bold"
+                       Foreground="{DynamicResource HeadingBrush}" Margin="0,0,0,8"/>
+            <Button Content="Home"     Command="{Binding GoToHomeCommand}"     HorizontalAlignment="Stretch"/>
+            <Button Content="Courses"  Command="{Binding GoToCoursesCommand}"  HorizontalAlignment="Stretch"/>
+            <Button Content="Students" Command="{Binding GoToStudentsCommand}" HorizontalAlignment="Stretch"/>
+        </StackPanel>
+    </Border>
+
+    <ContentControl Grid.Column="1" Padding="24" Content="{Binding CurrentView}"/>
+</Grid>
+</Window>

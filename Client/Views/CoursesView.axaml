@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Westcoast_Education_Avalonia.ViewModels"
+             xmlns:models="using:Westcoast_Education_Avalonia.Models"
+             x:Class="Westcoast_Education_Avalonia.Views.CoursesView"
+             x:DataType="vm:CoursesViewModel">
+
+    <StackPanel Spacing="12">
+        <TextBlock Text="Courses" FontSize="28"
+                   Foreground="{DynamicResource HeadingBrush}"/>
+
+        <ListBox ItemsSource="{Binding Courses}"
+                 SelectedItem="{Binding SelectedCourse}">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:Course">
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding Teacher}"
+                                   Foreground="{DynamicResource MutedTextBrush}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</UserControl>

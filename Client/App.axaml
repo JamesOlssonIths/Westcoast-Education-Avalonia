@@ -1,0 +1,40 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Westcoast_Education_Avalonia"
+             x:Class="Westcoast_Education_Avalonia.App"
+             RequestedThemeVariant="Default">
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+
+    <Application.Resources>
+        <!-- Backgrund -->
+        <SolidColorBrush x:Key="AppBackgroundBrush">#121211</SolidColorBrush>
+        <SolidColorBrush x:Key="NavigationBrush">#191918</SolidColorBrush>
+        <SolidColorBrush x:Key="SurfaceBrush">#222220</SolidColorBrush>
+        <SolidColorBrush x:Key="SurfaceHoverBrush">#2C2C29</SolidColorBrush>
+        <SolidColorBrush x:Key="BorderBrush">#3B3B36</SolidColorBrush>
+
+        <!-- More colour winthibtheme -->
+        <SolidColorBrush x:Key="PrimaryBrush">#E7A93B</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryHoverBrush">#F0BB58</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryPressedBrush">#C98722</SolidColorBrush>
+        <SolidColorBrush x:Key="SecondaryBrush">#91A77D</SolidColorBrush>
+
+        <!-- Text -->
+        <SolidColorBrush x:Key="HeadingBrush">#F4F1EA</SolidColorBrush>
+        <SolidColorBrush x:Key="TextBrush">#D2D0C9</SolidColorBrush>
+        <SolidColorBrush x:Key="MutedTextBrush">#9C9B94</SolidColorBrush>
+        <SolidColorBrush x:Key="DisabledTextBrush">#696963</SolidColorBrush>
+
+        <!-- Status/popups -->
+        <SolidColorBrush x:Key="SuccessBrush">#79B88A</SolidColorBrush>
+        <SolidColorBrush x:Key="WarningBrush">#E8A849</SolidColorBrush>
+        <SolidColorBrush x:Key="ErrorBrush">#DF6C5B</SolidColorBrush>
+    </Application.Resources>
+</Application>

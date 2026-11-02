@@ -1,0 +1,10 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Westcoast_Education_Avalonia.ViewModels"
+             x:Class="Westcoast_Education_Avalonia.Views.HomeView"
+             x:DataType="vm:HomeViewModel">
+
+    <TextBlock Text="{Binding Welcome}"
+               FontSize="28"
+               Foreground="{DynamicResource HeadingBrush}"/>
+</UserControl>
