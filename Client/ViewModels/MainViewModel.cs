@@ -29,4 +29,7 @@ public partial class MainViewModel : ViewModelBase
 
     [RelayCommand]
     private void GoToStudents() => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.Students);
+
+    [RelayCommand]
+    private void GoToAddStudent() => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.AddStudent);
 }

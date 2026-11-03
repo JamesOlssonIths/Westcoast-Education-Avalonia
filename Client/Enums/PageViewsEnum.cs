@@ -4,6 +4,7 @@ public enum PageViewsEnum
 {
     Home,
     Courses,
-    Students
+    Students,
+    AddStudent
 
 }

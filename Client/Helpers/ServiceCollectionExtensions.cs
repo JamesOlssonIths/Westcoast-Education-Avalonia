@@ -24,6 +24,7 @@ public static class ServiceCollectionExtensions
             PageViewsEnum.Home     => c.GetRequiredService<HomeViewModel>(),
             PageViewsEnum.Courses  => c.GetRequiredService<CoursesViewModel>(),
             PageViewsEnum.Students => c.GetRequiredService<StudentsViewModel>(),
+            PageViewsEnum.AddStudent => c.GetRequiredService<AddStudentViewModel>(),
             _ => throw new InvalidOperationException()
         });
     }
