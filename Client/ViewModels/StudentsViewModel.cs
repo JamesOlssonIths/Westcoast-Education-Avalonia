@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Westcoast_Education_Avalonia.Models;
 
 namespace Westcoast_Education_Avalonia.ViewModels;
@@ -15,4 +16,12 @@ public partial class StudentsViewModel : ViewModelBase
 
     [ObservableProperty]
     public partial Student? SelectedStudent { get; set; }
+
+    [RelayCommand]
+    private void AddStudent()
+    {
+        // We’ll open the student-entry window here next.
+    }
+
+   
 }

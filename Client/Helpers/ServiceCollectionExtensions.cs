@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
         collection.AddTransient<HomeViewModel>();
         collection.AddTransient<CoursesViewModel>();
         collection.AddTransient<StudentsViewModel>();
+        collection.AddTransient<AddStudentViewModel>();
 
 
         collection.AddSingleton<Func<PageViewsEnum, ViewModelBase>>(c => page => page switch

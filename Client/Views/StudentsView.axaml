@@ -8,7 +8,9 @@
     <StackPanel Spacing="12">
         <TextBlock Text="Students" FontSize="28"
                    Foreground="{DynamicResource HeadingBrush}"/>
+        <Button Content="Add Student" Command="{Binding AddStudentCommand}">
 
+        </Button>
         <ListBox ItemsSource="{Binding Students}"
                  SelectedItem="{Binding SelectedStudent}">
             <ListBox.ItemTemplate>
