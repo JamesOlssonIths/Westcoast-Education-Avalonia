@@ -14,8 +14,8 @@
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:Student">
                     <StackPanel Spacing="2">
-                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold"/>
-                        <TextBlock Text="{Binding Email}"
+                        <TextBlock Text="{Binding FirstName}" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding PhoneNumber}"
                                    Foreground="{DynamicResource MutedTextBrush}"/>
                     </StackPanel>
                 </DataTemplate>

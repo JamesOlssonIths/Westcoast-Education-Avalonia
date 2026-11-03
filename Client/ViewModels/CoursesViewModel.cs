@@ -8,9 +8,9 @@ public partial class CoursesViewModel : ViewModelBase
 {
     public ObservableCollection<Course> Courses { get; } =
     [
-        new("C# Fundamentals", "Anna Berg", 8),
-        new("Web Development", "Karl Svensson", 12),
-        new("Databases", "Maria Lind", 6),
+        new("C# Fundamentals", "Anna Berg", false),
+        new("Web Development", "Karl Svensson", true),
+        new("Databases", "Maria Lind", false),
     ];
 
     [ObservableProperty]

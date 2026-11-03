@@ -15,8 +15,8 @@
                 <DataTemplate x:DataType="models:Course">
                     <StackPanel Spacing="2">
                         <TextBlock Text="{Binding Title}" FontWeight="SemiBold"/>
-                        <TextBlock Text="{Binding Teacher}"
-                                   Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{Binding Teacher}" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{Binding Remote}" Foreground="{DynamicResource MutedTextBrush}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
