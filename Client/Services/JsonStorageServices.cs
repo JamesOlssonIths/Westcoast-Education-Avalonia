@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using Westcoast_Educatio_Avalonia.interfaces;
+using Westcoast_Education_Avalonia.Interfaces;
 
 public class JsonStorageServices<T> : IStorage<T>
 {

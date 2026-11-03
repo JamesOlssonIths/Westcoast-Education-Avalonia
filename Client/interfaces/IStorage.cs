@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Westcoast_Educatio_Avalonia.interfaces;
+namespace Westcoast_Education_Avalonia.Interfaces;
 
 public interface IStorage<T>
 {

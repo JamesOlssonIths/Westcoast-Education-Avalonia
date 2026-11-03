@@ -4,6 +4,9 @@ using Westcoast_Education_Avalonia.ViewModels;
 using Westcoast_Education_Avalonia.Interfaces;
 using Westcoast_Education_Avalonia.Factories;
 using Westcoast_Education_Avalonia.Enums;
+using Westcoast_Education_Avalonia.Models;
+using Westcoast_Education_Avalonia.Services;
+using WestCoast_Education;
 
 namespace Westcoast_Education_Avalonia.Helpers;
 
@@ -17,6 +20,8 @@ public static class ServiceCollectionExtensions
         collection.AddTransient<CoursesViewModel>();
         collection.AddTransient<StudentsViewModel>();
         collection.AddTransient<AddStudentViewModel>();
+        collection.AddTransient<IStorage<Student>, JsonStorageServices<Student>>();
+        collection.AddTransient<IStudentService, StudentServices>();
 
 
         collection.AddSingleton<Func<PageViewsEnum, ViewModelBase>>(c => page => page switch

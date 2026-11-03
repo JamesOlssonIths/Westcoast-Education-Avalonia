@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Westcoast_Educatio_Avalonia.interfaces;
 using Westcoast_Education_Avalonia.Interfaces;
 using Westcoast_Education_Avalonia.Models;
 
