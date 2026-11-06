@@ -6,18 +6,22 @@
              x:DataType="vm:StudentsViewModel">
 
     <StackPanel Spacing="12">
-        <TextBlock Text="Students" FontSize="28"
-                   Foreground="{DynamicResource HeadingBrush}"/>
-       <Button Content="Add Student"
-        Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToAddStudentCommand}"/>
+        <TextBlock Text="Students"
+                   FontSize="28"
+                   Foreground="{DynamicResource HeadingBrush}" />
+
+        <Button Content="Add student"
+                Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToAddStudentCommand}" />
+
         <ListBox ItemsSource="{Binding Students}"
                  SelectedItem="{Binding SelectedStudent}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:Student">
                     <StackPanel Spacing="2">
-                        <TextBlock Text="{Binding FirstName}" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding FirstName}"
+                                   FontWeight="SemiBold" />
                         <TextBlock Text="{Binding PhoneNumber}"
-                                   Foreground="{DynamicResource MutedTextBrush}"/>
+                                   Foreground="{DynamicResource MutedTextBrush}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

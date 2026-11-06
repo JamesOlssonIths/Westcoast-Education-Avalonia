@@ -5,7 +5,7 @@ using Westcoast_Education_Avalonia.Models;
 
 namespace Westcoast_Education_Avalonia.Services;
 
-public class StudentServices 
+public class StudentServices : IStudentService
 {
     private readonly IStorage<Student> _storage;
     private readonly string _path =

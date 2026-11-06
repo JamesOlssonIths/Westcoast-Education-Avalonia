@@ -3,23 +3,37 @@
              xmlns:vm="using:Westcoast_Education_Avalonia.ViewModels"
              x:Class="Westcoast_Education_Avalonia.Views.AddStudentView"
              x:DataType="vm:AddStudentViewModel">
-      
-        <StackPanel
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        >
-        
-          <TextBlock Text="Student Form goes here"/>
-          <StackPanel>
-            <TextBox PlaceholderText="FirstName" Text="{Binding FirstName}"> </TextBox>
-            <TextBox PlaceholderText="LastName" Text="{Binding LastName}" > </TextBox>
-            <TextBox PlaceholderText="Phone number" Text="{Binding PhoneNumber}"> </TextBox>
-            <TextBox PlaceholderText="Socail sec number" Text="{Binding SocialSecurityNumber}"> </TextBox>
-          </StackPanel>
 
-          <StackPanel Spacing="80" Orientation="Horizontal">
-            <Button Content="Save" />
-            <Button  Content="Exit" Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToStudentsCommand}" /> 
-          </StackPanel>
-      </StackPanel>
-    </UserControl>
+    <StackPanel Margin="24"
+                Spacing="12"
+                HorizontalAlignment="Center">
+
+        <TextBlock Text="{Binding PageTitle}"
+                   FontSize="28"
+                   Foreground="{DynamicResource HeadingBrush}" />
+
+        <TextBlock Text="First name" />
+        <TextBox Text="{Binding FirstName}" />
+
+        <TextBlock Text="Last name" />
+        <TextBox Text="{Binding LastName}" />
+
+        <TextBlock Text="Phone number" />
+        <TextBox Text="{Binding PhoneNumber}" />
+
+        <TextBlock Text="Social security number" />
+        <TextBox Text="{Binding SocialSecurityNumber}" />
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="12"
+                    Margin="0,12,0,0">
+
+            <Button Content="Save"
+                    Command="{Binding SaveCommand}" />
+
+            <Button Content="Exit"
+                    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToStudentsCommand}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

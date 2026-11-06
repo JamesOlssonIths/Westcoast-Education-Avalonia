@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Westcoast_Education_Avalonia.Models;
 
-public record Course
+public class Course
 {
     public string CourseNumber { get; set; }
     public string? Title { get; set; }

@@ -1,27 +1,22 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+using Westcoast_Education_Avalonia.Interfaces;
 using Westcoast_Education_Avalonia.Models;
 
 namespace Westcoast_Education_Avalonia.ViewModels;
 
 public partial class StudentsViewModel : ViewModelBase
 {
-    public ObservableCollection<Student> Students { get; } =
-    [
-        new("Erik Johansson", "erik@example.com", "C# Fundamentals"),
-        new("Sara Nilsson", "sara@example.com", "Web Development"),
-        new("Omar Hassan", "omar@example.com", "Databases"),
-    ];
+    public ObservableCollection<Student> Students { get; } = [];
 
     [ObservableProperty]
     public partial Student? SelectedStudent { get; set; }
 
-    [RelayCommand]
-    private void AddStudent()
+    public StudentsViewModel(IStudentService studentService)
     {
-        // We’ll open the student-entry window here next.
+        foreach (var student in studentService.GetAll())
+        {
+            Students.Add(student);
+        }
     }
-
-   
 }
