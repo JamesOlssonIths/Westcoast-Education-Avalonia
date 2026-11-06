@@ -21,6 +21,7 @@ public static class ServiceCollectionExtensions
         collection.AddTransient<CoursesViewModel>();
         collection.AddTransient<StudentsViewModel>();
         collection.AddTransient<AddStudentViewModel>();
+        collection.AddTransient<AddCourseViewModel>();
 
         collection.AddTransient<IStorage<Student>, JsonStorageServices<Student>>();
         collection.AddTransient<IStorage<Course>, JsonStorageServices<Course>>();
@@ -33,6 +34,7 @@ public static class ServiceCollectionExtensions
             PageViewsEnum.Courses => c.GetRequiredService<CoursesViewModel>(),
             PageViewsEnum.Students => c.GetRequiredService<StudentsViewModel>(),
             PageViewsEnum.AddStudent => c.GetRequiredService<AddStudentViewModel>(),
+            PageViewsEnum.AddCourse => c.GetRequiredService<AddCourseViewModel>(),
             _ => throw new InvalidOperationException()
         });
     }

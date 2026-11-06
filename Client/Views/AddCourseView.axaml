@@ -17,14 +17,15 @@
                    FontSize="28"
                    Foreground="{DynamicResource HeadingBrush}" />
 
-        <TextBlock Text="First name" />
+        <TextBlock Text="Course Number" />
         <TextBox Text="{Binding CourseNumber}" />
 
-        <TextBlock Text="Last name" />
+        <TextBlock Text="Course Title" />
         <TextBox Text="{Binding Title}" />
 
-        <TextBlock Text="Phone number" />
-        <TextBox Text="{Binding Remote}" />
+        <TextBlock Text="Is the course remote?" />
+        <CheckBox Content="{Binding Remote}"/>
+       
 
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"

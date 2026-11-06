@@ -5,18 +5,23 @@
              x:Class="Westcoast_Education_Avalonia.Views.CoursesView"
              x:DataType="vm:CoursesViewModel">
 
-    <StackPanel Spacing="12">
-        <TextBlock Text="Courses" FontSize="28"
-                   Foreground="{DynamicResource HeadingBrush}"/>
 
-        <ListBox ItemsSource="{Binding Courses}"
-                 SelectedItem="{Binding SelectedCourse}">
+    <StackPanel Spacing="12">
+        <TextBlock Text="Course"
+                   FontSize="28"
+                   Foreground="{DynamicResource HeadingBrush}" />
+
+        <Button Content="Add Course"
+                Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToAddCourseCommand}" />
+
+        <ListBox>
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:Course">
                     <StackPanel Spacing="2">
-                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold"/>
-                        <TextBlock Text="{Binding Teacher}" Foreground="{DynamicResource MutedTextBrush}"/>
-                        <TextBlock Text="{Binding Remote}" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{Binding CourseNumber}"
+                                   FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding Title}"
+                                   Foreground="{DynamicResource MutedTextBrush}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
