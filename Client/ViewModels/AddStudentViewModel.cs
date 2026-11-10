@@ -1,9 +1,8 @@
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using WestCoast_Education;
 using Westcoast_Education_Avalonia.Interfaces;
 using Westcoast_Education_Avalonia.Models;
-using Westcoast_Education_Avalonia.Services;
 
 namespace Westcoast_Education_Avalonia.ViewModels;
 
@@ -23,11 +22,14 @@ public partial class AddStudentViewModel : ViewModelBase
     [ObservableProperty]
     public partial string SocialSecurityNumber { get; set; } = string.Empty;
 
-    public AddStudentViewModel()
-    {
-        _studentService = new StudentServices(new JsonStorageServices<Student>());
-        PageTitle = "Add student";
-    }
+    [ObservableProperty]
+    public partial string Street { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string PostalCode { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string City { get; set; } = string.Empty;
 
     public AddStudentViewModel(IStudentService studentService)
     {
@@ -36,17 +38,22 @@ public partial class AddStudentViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    private void Save()
+    private async Task Save()
     {
-        Student student = new()
+      Student student = new()
+    {
+        FirstName = FirstName,
+        LastName = LastName,
+        PhoneNumber = PhoneNumber,
+        SocialSecurityNumber = SocialSecurityNumber,
+        Address = new Address
         {
-            FirstName = FirstName,
-            LastName = LastName,
-            PhoneNumber = PhoneNumber,
-            SocialSecurityNumber = SocialSecurityNumber
-        };
-
-        _studentService.Add(student);
+            Street = Street,
+            PostalCode = PostalCode,
+            City = City
+        }
+    };
+        await _studentService.Add(student);
         ClearData();
     }
 
@@ -56,5 +63,8 @@ public partial class AddStudentViewModel : ViewModelBase
         LastName = string.Empty;
         PhoneNumber = string.Empty;
         SocialSecurityNumber = string.Empty;
+        Street = string.Empty;
+        PostalCode = string.Empty;
+        City = string.Empty;
     }
 }

@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Westcoast_Education_Avalonia.Interfaces;
 using Westcoast_Education_Avalonia.Models;
 
@@ -7,24 +7,15 @@ namespace Westcoast_Education_Avalonia.Services;
 
 public class StudentServices : IStudentService
 {
-    private readonly IStorage<Student> _storage;
-    private readonly string _path =
-        Environment.CurrentDirectory + "/Data/students.json";
-
-    public StudentServices(IStorage<Student> storage)
+    public async Task Add(Student student)
     {
-        _storage = storage;
+        var httpService = new HttpService<Student>();
+        await httpService.Post("students", student);
     }
 
-    public List<Student> GetAll()
+    public async Task<List<Student>> List()
     {
-        return _storage.Read(_path);
-    }
-
-    public void Add(Student student)
-    {
-        var students = _storage.Read(_path);
-        students.Add(student);
-        _storage.Write(_path, students);
+        var httpService = new HttpService<Student>();
+        return await httpService.Get("students");
     }
 }

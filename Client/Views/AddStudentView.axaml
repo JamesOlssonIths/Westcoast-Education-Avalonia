@@ -23,6 +23,14 @@
 
         <TextBlock Text="Social security number" />
         <TextBox Text="{Binding SocialSecurityNumber}" />
+        <TextBlock Text="Street" />
+                <TextBox Text="{Binding Street}" />
+
+        <TextBlock Text="Postal code" />
+                <TextBox Text="{Binding PostalCode}" />
+
+        <TextBlock Text="City" />
+                <TextBox Text="{Binding City}" />
 
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
