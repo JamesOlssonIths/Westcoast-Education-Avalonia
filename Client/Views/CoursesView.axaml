@@ -13,18 +13,19 @@
 
         <Button Content="Add Course"
                 Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToAddCourseCommand}" />
-
-        <ListBox>
+          <ListBox ItemsSource="{Binding Courses}"
+         SelectedItem="{Binding SelectedCourse}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:Course">
                     <StackPanel Spacing="2">
                         <TextBlock Text="{Binding CourseNumber}"
-                                   FontWeight="SemiBold" />
+                                FontWeight="SemiBold" />
                         <TextBlock Text="{Binding Title}"
-                                   Foreground="{DynamicResource MutedTextBrush}" />
+                                Foreground="{DynamicResource MutedTextBrush}" />
+                            
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
+</ListBox>
     </StackPanel>
 </UserControl>

@@ -22,10 +22,13 @@
 
         <TextBlock Text="Course Title" />
         <TextBox Text="{Binding Title}" />
+        <StackPanel HorizontalAlignment="Center">
 
-        <TextBlock Text="Is the course remote?" />
-        <CheckBox Content="{Binding Remote}"/>
-       
+                        <CheckBox Content="Remote course"
+                                IsThreeState="False"
+                                IsChecked="{Binding Remote, Mode=TwoWay}" />
+        </StackPanel>
+                
 
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"

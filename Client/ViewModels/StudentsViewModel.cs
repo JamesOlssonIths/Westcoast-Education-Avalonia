@@ -14,9 +14,9 @@ public partial class StudentsViewModel : ViewModelBase
 
     public StudentsViewModel(IStudentService studentService)
     {
-        foreach (var student in studentService.GetAll())
+        foreach (var item in studentService.GetAll())
         {
-            Students.Add(student);
+            Students.Add(item);
         }
     }
 }
