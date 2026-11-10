@@ -5,19 +5,14 @@ namespace Westcoast_Education_Avalonia.Models;
 
 public class Course
 {
-    public string CourseNumber { get; set; }
-    public string? Title { get; set; }
-    public string? TotalWeeks { get; set; }
-    public bool Remote { get; set; }
-    public DateTime EndDate { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public required string CourseNumber { get; set; }
+    public required string Title { get; set; }
+    public int Duration { get; set; }
+    public string DurationUnit { get; set; } = "veckor";
     public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
+    public bool IsOnline { get; set; }
+    public string? TeacherName { get; set; }
 
-    public List<Student> Students { get; set; } =[];
-     public Teacher? Teacher { get; set; }
-    public Course(string courseNumber, string title, bool remote)
-    {
-        CourseNumber = courseNumber;
-        Title = title;
-        Remote = remote;
-    }
 }
