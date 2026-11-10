@@ -25,6 +25,9 @@
                 <Button Content="Ta Bort"
                         Command="{Binding $parent[UserControl].DataContext.DeleteCommand}"
                         CommandParameter="{Binding CourseNumber}" />
+                        <Button Content="Edit"
+        Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToEditCourseCommand}"
+        CommandParameter="{Binding CourseNumber}" />
             </StackPanel>
         </DataTemplate>
     </ListBox.ItemTemplate>

@@ -10,4 +10,5 @@ public interface ICourseService
     Task Delete(string id);
     Task<CourseRestDb> Find(string courseNumber);
     Task<List<Course>> List();
+    Task Update(Course course, string id);
 }

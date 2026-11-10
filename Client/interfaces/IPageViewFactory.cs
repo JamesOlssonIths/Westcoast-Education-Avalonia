@@ -6,4 +6,5 @@ namespace Westcoast_Education_Avalonia.Interfaces;
 public interface IPageViewFactory
 {
     ViewModelBase LoadPageViewModel(PageViewsEnum page);
+    ViewModelBase LoadPageViewModel(PageViewsEnum page, string id);
 }

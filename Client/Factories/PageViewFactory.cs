@@ -7,6 +7,7 @@ namespace Westcoast_Education_Avalonia.Factories;
 
 public class PageViewFactory : IPageViewFactory
 {
+    private readonly Func<PageViewsEnum, string, ViewModelBase> _pageFactoryWithId;
     private readonly Func<PageViewsEnum, ViewModelBase> _pageFactory;
 
     public PageViewFactory(Func<PageViewsEnum, ViewModelBase> pageFactory)
@@ -17,5 +18,15 @@ public class PageViewFactory : IPageViewFactory
     public ViewModelBase LoadPageViewModel(PageViewsEnum page)
     {
         return _pageFactory.Invoke(page);
+    }
+
+    public PageViewFactory(Func<PageViewsEnum, ViewModelBase> pageFactory,Func<PageViewsEnum, string, ViewModelBase> pageFactoryWithId)
+    {
+        _pageFactory = pageFactory;
+        _pageFactoryWithId = pageFactoryWithId;
+    }
+    public ViewModelBase LoadPageViewModel(PageViewsEnum page, string id)
+    {
+        return _pageFactoryWithId.Invoke(page, id);
     }
 }

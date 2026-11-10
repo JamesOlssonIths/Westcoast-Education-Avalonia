@@ -37,5 +37,23 @@ public static class ServiceCollectionExtensions
             PageViewsEnum.AddCourse => c.GetRequiredService<AddCourseViewModel>(),
             _ => throw new InvalidOperationException()
         });
+        
+        collection.AddSingleton<Func<PageViewsEnum, string, ViewModelBase>>(c =>(page, courseNumber) => page switch
+        {
+            PageViewsEnum.EditCourse => new EditCourseViewModel(new CourseServices(), courseNumber),
+            _ => throw new InvalidOperationException()
+        });
+    }
+}
+
+internal class EditCourseViewModel : ViewModelBase
+{
+    private CourseServices courseServices;
+    private string courseNumber;
+
+    public EditCourseViewModel(CourseServices courseServices, string courseNumber)
+    {
+        this.courseServices = courseServices;
+        this.courseNumber = courseNumber;
     }
 }

@@ -36,5 +36,7 @@ public partial class MainViewModel : ViewModelBase
     [RelayCommand]
     private void GoToAddCourse() => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.AddCourse);
 
+    [RelayCommand] private void GoToEditCourse(string courseNumber) => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.EditCourse,courseNumber);
+
 
 }

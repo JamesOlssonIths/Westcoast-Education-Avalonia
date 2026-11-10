@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Westcoast_Education_Avalonia.ViewModels"
+             x:Class="Westcoast_Education_Avalonia.Views.EditCourseView"
+             x:DataType="vm:EditCourseViewModel">
+
+    <StackPanel Margin="24"
+                Spacing="12"
+                HorizontalAlignment="Center">
+
+        <TextBlock Text="{Binding PageTitle}"
+                   FontSize="28"
+                   Foreground="{DynamicResource HeadingBrush}" />
+
+        <TextBlock Text="Course number" />
+        <TextBox Text="{Binding CourseNumber}" />
+
+        <TextBlock Text="Course title" />
+        <TextBox Text="{Binding Title}" />
+
+        <TextBlock Text="Duration" />
+        <TextBox Text="{Binding Duration}" />
+
+        <TextBlock Text="Duration unit" />
+        <TextBox Text="{Binding DurationUnit}" />
+
+        <TextBlock Text="Start date (YYYY-MM-DD)" />
+        <TextBox Text="{Binding StartDate}" />
+
+        <TextBlock Text="End date (YYYY-MM-DD)" />
+        <TextBox Text="{Binding EndDate}" />
+
+        <CheckBox Content="Remote course"
+                  IsChecked="{Binding Remote}" />
+
+        <TextBlock Text="Teacher" />
+        <TextBox Text="{Binding TeacherName}" />
+
+        <TextBlock Text="{Binding Message}" />
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="12"
+                    Margin="0,12,0,0">
+
+            <Button Content="Save"
+                    Command="{Binding SaveCommand}" />
+
+            <Button Content="Back"
+                    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToCoursesCommand}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

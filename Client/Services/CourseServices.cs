@@ -33,4 +33,10 @@ public class CourseServices : ICourseService
         var httpService = new HttpService<Course>();
         return await httpService.Get("courses");
     }
+
+    public async Task Update(Course course, string id)
+    {
+        var httpService = new HttpService<Course>();
+        await httpService.Put("courses", course, id);
+    }
 }
