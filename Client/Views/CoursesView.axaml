@@ -13,19 +13,35 @@
 
         <Button Content="Add Course"
                 Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToAddCourseCommand}" />
-          <ListBox ItemsSource="{Binding Courses}"
-                    SelectedItem="{Binding SelectedCourse}">
-            <ListBox.ItemTemplate>
-                <DataTemplate x:DataType="models:Course">
-                    <StackPanel Spacing="2">
-                        <TextBlock Text="{Binding CourseNumber}"
-                                FontWeight="SemiBold" />
-                        <TextBlock Text="{Binding Title}"
-                                Foreground="{DynamicResource MutedTextBrush}" />
-                            
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+         <ListBox ItemsSource="{Binding Courses}"
+         SelectedItem="{Binding SelectedCourse}">
+    <ListBox.ItemTemplate>
+        <DataTemplate x:DataType="models:Course">
+            <StackPanel Spacing="2">
+                <TextBlock Text="{Binding CourseNumber}"
+                           FontWeight="SemiBold" />
+                <TextBlock Text="{Binding Title}"
+                           Foreground="{DynamicResource MutedTextBrush}" />
+                <Button Content="Ta Bort"
+
+                        Command="{Binding $parent[UserControl].DataContext.DeleteCommand}"
+                        CommandParameter="{Binding CourseNumber}" />
+            </StackPanel>
+        </DataTemplate>
+    </ListBox.ItemTemplate>
+</ListBox>
+<Popup IsOpen="{Binding ShowDialog}" Placement="Center">
+    <Border Padding="20" Background="#333333">
+        <StackPanel Spacing="12">
+            <TextBlock Text="Säker på att du vill ta bort kursen?" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="8">
+                <Button Content="Ja" Command="{Binding ConfirmCommand}" />
+                <Button Content="Nej" Command="{Binding CancelCommand}" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Popup>
     </StackPanel>
 </UserControl>
