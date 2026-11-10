@@ -46,14 +46,3 @@ public static class ServiceCollectionExtensions
     }
 }
 
-internal class EditCourseViewModel : ViewModelBase
-{
-    private CourseServices courseServices;
-    private string courseNumber;
-
-    public EditCourseViewModel(CourseServices courseServices, string courseNumber)
-    {
-        this.courseServices = courseServices;
-        this.courseNumber = courseNumber;
-    }
-}
