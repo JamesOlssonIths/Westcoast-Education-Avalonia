@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Westcoast_Education_Avalonia.Interfaces;
 using Westcoast_Education_Avalonia.Models;
 
@@ -7,24 +7,30 @@ namespace Westcoast_Education_Avalonia.Services;
 
 public class CourseServices : ICourseService
 {
-    private readonly IStorage<Course> _storage;
-
-    private readonly string _path = Environment.CurrentDirectory + "/Data/course.json";
-
-    public CourseServices(IStorage<Course> storage)
+    public async Task Add(Course course)
     {
-        _storage = storage;
+        var httpService = new HttpService<Course>();
+        await httpService.Post("courses", course);
     }
 
-    public List<Course> GetAll()
+    public async Task Delete(string id)
     {
-        return _storage.Read(_path);
+        var httpService = new HttpService<Course>();
+        await httpService.Delete("courses", id);
     }
 
-    public void Add(Course course)
+    public async Task<CourseRestDb> Find(string courseNumber)
     {
-        var students = _storage.Read(_path);
-        students.Add(course);
-        _storage.Write(_path, students);
+        var httpService = new HttpService<CourseRestDb>();
+        var searchCriteria =
+            "{\"courseNumber\":"+ "\"" + courseNumber +"\"}";
+
+        return await httpService.Get("courses", searchCriteria);
+    }
+
+    public async Task<List<Course>> List()
+    {
+        var httpService = new HttpService<Course>();
+        return await httpService.Get("courses");
     }
 }

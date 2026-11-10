@@ -14,7 +14,7 @@
         <Button Content="Add Course"
                 Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToAddCourseCommand}" />
           <ListBox ItemsSource="{Binding Courses}"
-         SelectedItem="{Binding SelectedCourse}">
+                    SelectedItem="{Binding SelectedCourse}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:Course">
                     <StackPanel Spacing="2">
@@ -26,6 +26,6 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-</ListBox>
+        </ListBox>
     </StackPanel>
 </UserControl>

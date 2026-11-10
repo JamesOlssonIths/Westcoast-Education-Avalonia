@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using WestCoast_Education;
 using Westcoast_Education_Avalonia.Models;
 using Westcoast_Education_Avalonia.Services;
 
@@ -21,24 +21,25 @@ public partial class AddCourseViewModel : ViewModelBase
 
 
 
-    public AddCourseViewModel()
-    {
-        _courseServices = new CourseServices(new JsonStorageServices<Course>());
-        PageTitle="Add course";
-    }
+  public AddCourseViewModel()
+{
+    _courseServices = new CourseServices();
+    PageTitle = "Add course";
+}
     
     [RelayCommand]
-    private void Save()
+    private async Task Save()
     {
-        Course course = new(CourseNumber = CourseNumber,
+        Course course = new()
+        {
+            CourseNumber = CourseNumber,
             Title = Title,
-            Remote = Remote);
-      
+            Remote = Remote
+        };
 
-        _courseServices.Add(course);
+        await _courseServices.Add(course);
         ClearData();
     }
-
     private void ClearData()
     {
         CourseNumber = string.Empty;

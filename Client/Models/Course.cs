@@ -12,7 +12,7 @@ public class Course
     public string DurationUnit { get; set; } = "veckor";
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
-    public bool IsOnline { get; set; }
+    public bool Remote { get; set; }
     public string? TeacherName { get; set; }
 
 }
