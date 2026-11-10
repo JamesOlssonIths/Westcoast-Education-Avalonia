@@ -7,6 +7,9 @@ public enum PageViewsEnum
     Students,
     AddStudent,
     AddCourse,
-    EditCourse
+    EditCourse,
+    Teachers,
+    AddTeacher,
+    EditTeacher,
 
 }

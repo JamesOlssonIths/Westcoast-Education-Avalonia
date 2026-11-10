@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Westcoast_Education_Avalonia.ViewModels"
+             xmlns:models="using:Westcoast_Education_Avalonia.Models"
+             x:Class="Westcoast_Education_Avalonia.Views.TeacherView"
+             x:DataType="vm:TeachersViewModel">
+
+    <StackPanel Margin="24" Spacing="12">
+        <TextBlock Text="{Binding PageTitle}"
+                   FontSize="28"
+                   Foreground="{DynamicResource HeadingBrush}" />
+
+        <Button Content="Add Teacher"
+                Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToAddTeacherCommand}" />
+
+        <ListBox ItemsSource="{Binding Teachers}"
+                 SelectedItem="{Binding SelectedTeacher}">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:Teacher">
+                    <Grid ColumnDefinitions="*,Auto,Auto"
+                          Margin="8"
+                          ColumnSpacing="8">
+                        <StackPanel Grid.Column="0" Spacing="2">
+                            <TextBlock Text="{Binding FirstName}"
+                                       FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding LastName}" />
+                            <TextBlock Text="{Binding KnowledgeArea}"
+                                       Foreground="{DynamicResource MutedTextBrush}" />
+                        </StackPanel>
+
+                        <Button Grid.Column="1"
+                                Content="Edit"
+                                Command="{Binding $parent[ListBox].DataContext.EditTeacherCommand}"
+                                CommandParameter="{Binding SocialSecurityNumber}" />
+
+                        <Button Grid.Column="2"
+                                Content="Delete"
+                                Command="{Binding $parent[ListBox].DataContext.DeleteTeacherCommand}"
+                                CommandParameter="{Binding SocialSecurityNumber}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</UserControl>

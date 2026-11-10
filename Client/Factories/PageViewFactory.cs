@@ -7,12 +7,20 @@ namespace Westcoast_Education_Avalonia.Factories;
 
 public class PageViewFactory : IPageViewFactory
 {
-    private readonly Func<PageViewsEnum, string, ViewModelBase> _pageFactoryWithId;
     private readonly Func<PageViewsEnum, ViewModelBase> _pageFactory;
+    private readonly Func<PageViewsEnum, string, ViewModelBase>? _pageFactoryWithId;
 
     public PageViewFactory(Func<PageViewsEnum, ViewModelBase> pageFactory)
     {
         _pageFactory = pageFactory;
+    }
+
+    public PageViewFactory(
+        Func<PageViewsEnum, ViewModelBase> pageFactory,
+        Func<PageViewsEnum, string, ViewModelBase> pageFactoryWithId)
+    {
+        _pageFactory = pageFactory;
+        _pageFactoryWithId = pageFactoryWithId;
     }
 
     public ViewModelBase LoadPageViewModel(PageViewsEnum page)
@@ -20,13 +28,14 @@ public class PageViewFactory : IPageViewFactory
         return _pageFactory.Invoke(page);
     }
 
-    public PageViewFactory(Func<PageViewsEnum, ViewModelBase> pageFactory,Func<PageViewsEnum, string, ViewModelBase> pageFactoryWithId)
-    {
-        _pageFactory = pageFactory;
-        _pageFactoryWithId = pageFactoryWithId;
-    }
     public ViewModelBase LoadPageViewModel(PageViewsEnum page, string id)
     {
+        if (_pageFactoryWithId is null)
+        {
+            throw new InvalidOperationException(
+                "Hittar inte factory med idet");
+        }
+
         return _pageFactoryWithId.Invoke(page, id);
     }
 }

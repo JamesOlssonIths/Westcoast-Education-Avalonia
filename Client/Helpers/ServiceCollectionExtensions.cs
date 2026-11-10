@@ -20,29 +20,40 @@ public static class ServiceCollectionExtensions
         collection.AddTransient<HomeViewModel>();
         collection.AddTransient<CoursesViewModel>();
         collection.AddTransient<StudentsViewModel>();
+        collection.AddTransient<TeachersViewModel>();
         collection.AddTransient<AddStudentViewModel>();
         collection.AddTransient<AddCourseViewModel>();
+        collection.AddTransient<AddTeacherViewModel>();
 
         collection.AddTransient<IStorage<Student>, JsonStorageServices<Student>>();
         collection.AddTransient<IStorage<Course>, JsonStorageServices<Course>>();
         collection.AddTransient<IStudentService, StudentServices>();
         collection.AddTransient<ICourseService, CourseServices>();
+        collection.AddTransient<ITeacherService, TeacherServices>();
 
         collection.AddSingleton<Func<PageViewsEnum, ViewModelBase>>(c => page => page switch
         {
             PageViewsEnum.Home => c.GetRequiredService<HomeViewModel>(),
             PageViewsEnum.Courses => c.GetRequiredService<CoursesViewModel>(),
             PageViewsEnum.Students => c.GetRequiredService<StudentsViewModel>(),
+            PageViewsEnum.Teachers => c.GetRequiredService<TeachersViewModel>(),
             PageViewsEnum.AddStudent => c.GetRequiredService<AddStudentViewModel>(),
             PageViewsEnum.AddCourse => c.GetRequiredService<AddCourseViewModel>(),
+            PageViewsEnum.AddTeacher => c.GetRequiredService<AddTeacherViewModel>(),
+
             _ => throw new InvalidOperationException()
         });
-        
-        collection.AddSingleton<Func<PageViewsEnum, string, ViewModelBase>>(c =>(page, courseNumber) => page switch
-        {
-            PageViewsEnum.EditCourse => new EditCourseViewModel(new CourseServices(), courseNumber),
-            _ => throw new InvalidOperationException()
-        });
+
+        collection.AddSingleton<Func<PageViewsEnum, string, ViewModelBase>>(
+            c => (page, id) => page switch
+            {
+                PageViewsEnum.EditCourse =>
+                    new EditCourseViewModel(new CourseServices(), id),
+
+                PageViewsEnum.EditTeacher =>
+                    new EditTeacherViewModel(new TeacherServices(), id),
+
+                _ => throw new InvalidOperationException()
+            });
     }
 }
-

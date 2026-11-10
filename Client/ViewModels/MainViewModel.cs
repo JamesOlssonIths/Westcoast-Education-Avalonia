@@ -36,7 +36,18 @@ public partial class MainViewModel : ViewModelBase
     [RelayCommand]
     private void GoToAddCourse() => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.AddCourse);
 
-    [RelayCommand] private void GoToEditCourse(string courseNumber) => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.EditCourse,courseNumber);
+    [RelayCommand]
+    private void GoToTeachers() => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.Teachers);
+
+    [RelayCommand]
+    private void GoToAddTeacher() => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.AddTeacher);
+
+    [RelayCommand] 
+    private void GoToEditCourse(string courseNumber) => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.EditCourse,courseNumber);
+
+    [RelayCommand]
+    private void GoToEditTeacher(string socialSecurityNumber) => CurrentView = _pageViewFactory!.LoadPageViewModel(PageViewsEnum.EditTeacher, socialSecurityNumber);
+    
 
 
 }
