@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Westcoast_Education_Avalonia.ViewModels"
              xmlns:models="using:Westcoast_Education_Avalonia.Models"
-             x:Class="Westcoast_Education_Avalonia.Views.TeacherView"
+             x:Class="Westcoast_Education_Avalonia.Views.TeachersView"
              x:DataType="vm:TeachersViewModel">
 
     <StackPanel Margin="24" Spacing="12">
@@ -14,7 +14,8 @@
                 Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToAddTeacherCommand}" />
 
         <ListBox ItemsSource="{Binding Teachers}"
-                 SelectedItem="{Binding SelectedTeacher}">
+                 SelectedItem="{Binding SelectedTeacher}"
+                 x:DataType="vm:TeachersViewModel">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:Teacher">
                     <Grid ColumnDefinitions="*,Auto,Auto"
@@ -30,7 +31,7 @@
 
                         <Button Grid.Column="1"
                                 Content="Edit"
-                                Command="{Binding $parent[ListBox].DataContext.EditTeacherCommand}"
+                                Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToEditTeacherCommand}"
                                 CommandParameter="{Binding SocialSecurityNumber}" />
 
                         <Button Grid.Column="2"

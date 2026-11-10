@@ -13,21 +13,24 @@
         <vm:MainViewModel />
     </Design.DataContext>
 
-<Grid ColumnDefinitions="220,*" Background="{DynamicResource AppBackgroundBrush}">
+    <Grid ColumnDefinitions="220,*" Background="{DynamicResource AppBackgroundBrush}">
+        <Border Grid.Column="0"
+                Background="{DynamicResource SurfaceBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="0,0,1,0">
+            <StackPanel Margin="12" Spacing="8">
+                <TextBlock Text="Menu"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource HeadingBrush}"
+                           Margin="0,0,0,8" />
+                <Button Content="Home" Command="{Binding GoToHomeCommand}" HorizontalAlignment="Stretch" />
+                <Button Content="Courses" Command="{Binding GoToCoursesCommand}" HorizontalAlignment="Stretch" />
+                <Button Content="Students" Command="{Binding GoToStudentsCommand}" HorizontalAlignment="Stretch" />
+                <Button Content="Teachers" Command="{Binding GoToTeachersCommand}" HorizontalAlignment="Stretch" />
+            </StackPanel>
+        </Border>
 
-    <Border Grid.Column="0"
-            Background="{DynamicResource SurfaceBrush}"
-            BorderBrush="{DynamicResource BorderBrush}"
-            BorderThickness="0,0,1,0">
-        <StackPanel Margin="12" Spacing="8">
-            <TextBlock Text="Menu" FontSize="18" FontWeight="Bold"
-                       Foreground="{DynamicResource HeadingBrush}" Margin="0,0,0,8"/>
-            <Button Content="Home"     Command="{Binding GoToHomeCommand}"     HorizontalAlignment="Stretch"/>
-            <Button Content="Courses"  Command="{Binding GoToCoursesCommand}"  HorizontalAlignment="Stretch"/>
-            <Button Content="Students" Command="{Binding GoToStudentsCommand}" HorizontalAlignment="Stretch"/>
-        </StackPanel>
-    </Border>
-
-    <ContentControl Grid.Column="1" Padding="24" Content="{Binding CurrentView}"/>
-</Grid>
+        <ContentControl Grid.Column="1" Padding="24" Content="{Binding CurrentView}" />
+    </Grid>
 </Window>
