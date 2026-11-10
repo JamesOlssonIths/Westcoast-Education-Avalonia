@@ -23,7 +23,6 @@
                 <TextBlock Text="{Binding Title}"
                            Foreground="{DynamicResource MutedTextBrush}" />
                 <Button Content="Ta Bort"
-
                         Command="{Binding $parent[UserControl].DataContext.DeleteCommand}"
                         CommandParameter="{Binding CourseNumber}" />
             </StackPanel>

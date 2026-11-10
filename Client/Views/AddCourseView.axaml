@@ -24,9 +24,21 @@
         <TextBox Text="{Binding Title}" />
         <StackPanel HorizontalAlignment="Center">
 
-                        <CheckBox Content="Remote course"
-                                IsThreeState="False"
-                                IsChecked="{Binding Remote, Mode=TwoWay}" />
+        <CheckBox Content="Remote course"
+         IsChecked="{Binding Remote}" />
+        <TextBlock Text="Duration" />
+        <TextBox Text="{Binding Duration}" />
+
+        <TextBlock Text="Start date (YYYY-MM-DD)" />
+        <TextBox Text="{Binding StartDate}" />
+
+        <TextBlock Text="End date (YYYY-MM-DD)" />
+        <TextBox Text="{Binding EndDate}" />
+
+        <TextBlock Text="Teacher" />
+        <TextBox Text="{Binding TeacherName}" />
+
+        <TextBlock Text="{Binding Message}" />
         </StackPanel>
                 
 
@@ -39,7 +51,7 @@
                     Command="{Binding SaveCommand}" />
 
             <Button Content="Exit"
-                    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToStudentsCommand}" />
+                    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToCoursesCommand}" />
         </StackPanel>
     </StackPanel>
 
